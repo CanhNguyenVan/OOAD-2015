@@ -86,15 +86,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sales\frmViewListProductofBill.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Sales\frmViewListProductofBill.cs" />
     <Compile Include="Sales\frmViewListProductofBill.Designer.cs">
       <DependentUpon>frmViewListProductofBill.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sales\frmFillBill.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Sales\frmFillBill.cs" />
     <Compile Include="Sales\frmFillBill.Designer.cs">
       <DependentUpon>frmFillBill.cs</DependentUpon>
     </Compile>
