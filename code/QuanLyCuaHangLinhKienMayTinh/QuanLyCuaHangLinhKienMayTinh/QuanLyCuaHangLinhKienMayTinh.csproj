@@ -86,13 +86,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sales\frmViewListProductofBill.cs" />
-    <Compile Include="Sales\frmViewListProductofBill.Designer.cs">
-      <DependentUpon>frmViewListProductofBill.cs</DependentUpon>
+    <Compile Include="Sales\frmFindBill.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sales\frmFillBill.cs" />
-    <Compile Include="Sales\frmFillBill.Designer.cs">
-      <DependentUpon>frmFillBill.cs</DependentUpon>
+    <Compile Include="Sales\frmFindBill.Designer.cs">
+      <DependentUpon>frmFindBill.cs</DependentUpon>
     </Compile>
     <Compile Include="Sales\frmAddBill.cs">
       <SubType>Form</SubType>
@@ -203,11 +201,8 @@
     <Compile Include="Sales\frnViewReturning.Designer.cs">
       <DependentUpon>frnViewReturning.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Sales\frmViewListProductofBill.resx">
-      <DependentUpon>frmViewListProductofBill.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Sales\frmFillBill.resx">
-      <DependentUpon>frmFillBill.cs</DependentUpon>
+    <EmbeddedResource Include="Sales\frmFindBill.resx">
+      <DependentUpon>frmFindBill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sales\frmAddBill.resx">
       <DependentUpon>frmAddBill.cs</DependentUpon>
