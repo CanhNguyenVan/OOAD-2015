@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>QuanLyCuaHangLinhKienMayTinh</RootNamespace>
     <AssemblyName>QuanLyCuaHangLinhKienMayTinh</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,9 +32,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>QuanLyCuaHangLinhKienMayTinh.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar2, Version=11.2.0.1, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
@@ -88,6 +86,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Sales\frmViewListProductofBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\frmViewListProductofBill.Designer.cs">
+      <DependentUpon>frmViewListProductofBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\frmFillBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\frmFillBill.Designer.cs">
+      <DependentUpon>frmFillBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\frmAddBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\frmAddBill.Designer.cs">
+      <DependentUpon>frmAddBill.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,11 +146,29 @@
     <Compile Include="frmEmployee.Designer.cs">
       <DependentUpon>frmEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sales\frmManageChangingReturning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\frmManageChangingReturning.Designer.cs">
+      <DependentUpon>frmManageChangingReturning.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPosition.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmPosition.Designer.cs">
       <DependentUpon>frmPosition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\frmReportSaleResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\frmReportSaleResult.Designer.cs">
+      <DependentUpon>frmReportSaleResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\frmViewBillDiary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\frmViewBillDiary.Designer.cs">
+      <DependentUpon>frmViewBillDiary.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -155,24 +189,33 @@
     <Compile Include="frmInfoEmployee.Designer.cs">
       <DependentUpon>frmInfoEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="Warehouse\frmAddWarehouse.cs">
+    <Compile Include="Sales\frmViewChanging.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Warehouse\frmAddWarehouse.Designer.cs">
-      <DependentUpon>frmAddWarehouse.cs</DependentUpon>
+    <Compile Include="Sales\frmViewChanging.Designer.cs">
+      <DependentUpon>frmViewChanging.cs</DependentUpon>
     </Compile>
-    <Compile Include="Warehouse\frmProduct.cs">
+    <Compile Include="Sales\frmViewIncome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Warehouse\frmProduct.Designer.cs">
-      <DependentUpon>frmProduct.cs</DependentUpon>
+    <Compile Include="Sales\frmViewIncome.Designer.cs">
+      <DependentUpon>frmViewIncome.cs</DependentUpon>
     </Compile>
-    <Compile Include="Warehouse\frmWarehouse.cs">
+    <Compile Include="Sales\frnViewReturning.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Warehouse\frmWarehouse.Designer.cs">
-      <DependentUpon>frmWarehouse.cs</DependentUpon>
+    <Compile Include="Sales\frnViewReturning.Designer.cs">
+      <DependentUpon>frnViewReturning.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Sales\frmViewListProductofBill.resx">
+      <DependentUpon>frmViewListProductofBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales\frmFillBill.resx">
+      <DependentUpon>frmFillBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales\frmAddBill.resx">
+      <DependentUpon>frmAddBill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,8 +237,17 @@
     <EmbeddedResource Include="frmEmployee.resx">
       <DependentUpon>frmEmployee.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sales\frmManageChangingReturning.resx">
+      <DependentUpon>frmManageChangingReturning.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPosition.resx">
       <DependentUpon>frmPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales\frmReportSaleResult.resx">
+      <DependentUpon>frmReportSaleResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales\frmViewBillDiary.resx">
+      <DependentUpon>frmViewBillDiary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -209,14 +261,14 @@
     <EmbeddedResource Include="frmInfoEmployee.resx">
       <DependentUpon>frmInfoEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Warehouse\frmAddWarehouse.resx">
-      <DependentUpon>frmAddWarehouse.cs</DependentUpon>
+    <EmbeddedResource Include="Sales\frmViewChanging.resx">
+      <DependentUpon>frmViewChanging.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Warehouse\frmProduct.resx">
-      <DependentUpon>frmProduct.cs</DependentUpon>
+    <EmbeddedResource Include="Sales\frmViewIncome.resx">
+      <DependentUpon>frmViewIncome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Warehouse\frmWarehouse.resx">
-      <DependentUpon>frmWarehouse.cs</DependentUpon>
+    <EmbeddedResource Include="Sales\frnViewReturning.resx">
+      <DependentUpon>frnViewReturning.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -259,10 +311,6 @@
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{d08adfd6-3744-45d8-9eb6-e544d2a374ae}</Project>
       <Name>BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CommonLayer\CommonLayer.csproj">
-      <Project>{842849b1-cd5b-4224-b77d-0022c25379ec}</Project>
-      <Name>CommonLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{3b7150d3-8b40-4913-a77a-e0be6bc7fbe0}</Project>
