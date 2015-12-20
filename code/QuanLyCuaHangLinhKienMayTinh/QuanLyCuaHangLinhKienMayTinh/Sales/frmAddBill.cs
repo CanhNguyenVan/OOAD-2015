@@ -19,9 +19,13 @@ namespace QuanLyCuaHangLinhKienMayTinh.Sales
             InitializeComponent();
         }
         public void frmAddBill_Load(object sender, EventArgs e)
+        
         {
             dgvCustomer.DataSource = bll.GetAllCustomer();
-           dgvProduct.DataSource = bll.GetAllProduct();
+            // Load cái này sau khi có data base đầy đủ
+           // dgvProduct.DataSource = bll.GetAllProduct();
+
         }
+
     }
 }
