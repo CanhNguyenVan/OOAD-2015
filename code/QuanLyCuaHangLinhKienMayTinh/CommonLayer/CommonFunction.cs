@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.ApplicationBlocks.Data;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,5 +21,6 @@ namespace CommonLayer
         {
             return b == false ? 0 : 1;
         }
+
     }
 }
