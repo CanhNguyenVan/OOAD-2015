@@ -30,8 +30,6 @@ namespace DAL.Warehouse
                 {
                     new SqlParameter("@MaKho", data.MaKho),
                     new SqlParameter("@TenKho", data.TenKho),
-                    new SqlParameter("@TrangThai", data.TrangThai == true ? 1 : 0),
-                    new SqlParameter("@NgayTao", data.NgayTao),
                     new SqlParameter("@Ghichu", data.GhiChu),
                 };
                 return SqlHelper.ExecuteNonQuery(Constants.ConnectionString, 
@@ -70,8 +68,6 @@ namespace DAL.Warehouse
                 {
                     new SqlParameter("@MaKho", data.MaKho),
                     new SqlParameter("@TenKho", data.TenKho),
-                    new SqlParameter("@TrangThai", data.TrangThai == true ? 1 : 0),
-                    new SqlParameter("@NgayTao", data.NgayTao),
                     new SqlParameter("@Ghichu", data.GhiChu),
                 };
                 return SqlHelper.ExecuteNonQuery(Constants.ConnectionString,
