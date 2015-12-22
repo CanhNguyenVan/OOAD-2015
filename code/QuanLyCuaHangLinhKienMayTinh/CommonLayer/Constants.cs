@@ -21,5 +21,6 @@ namespace CommonLayer
         public static string MsgNotificationEditSuccessfuly = "Sửa thành công!";
 
         public static string MsgAlreadyExist = "Dữ liệu đã tồn tại hoặc lỗi dữ liệu đầu vào.";
+        public static string MsgNotificationDeletetSuccessfuly  = "Xóa thành công!";
     }
 }
