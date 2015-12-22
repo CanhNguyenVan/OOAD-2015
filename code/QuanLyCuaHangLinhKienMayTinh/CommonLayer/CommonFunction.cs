@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace CommonLayer
 {
+    public struct BillProduct {
+        public string proId;
+        public int num;
+    }
     public class CommonFunction
     {
 
