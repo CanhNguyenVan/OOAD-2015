@@ -35,8 +35,6 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.txtNote = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.chkState = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.btnAdd = new DevComponents.DotNetBar.ButtonX();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             this.SuspendLayout();
@@ -117,11 +115,11 @@
             // 
             this.txtNote.Border.Class = "TextBoxBorder";
             this.txtNote.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtNote.Location = new System.Drawing.Point(114, 235);
+            this.txtNote.Location = new System.Drawing.Point(114, 213);
             this.txtNote.MaxLength = 100;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(246, 20);
-            this.txtNote.TabIndex = 3;
+            this.txtNote.TabIndex = 2;
             this.txtNote.Click += new System.EventHandler(this.txt_Click);
             this.txtNote.TextChanged += new System.EventHandler(this.txt_TextChanged);
             // 
@@ -132,48 +130,22 @@
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.labelX3.Location = new System.Drawing.Point(13, 235);
+            this.labelX3.Location = new System.Drawing.Point(13, 213);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(75, 23);
             this.labelX3.TabIndex = 5;
             this.labelX3.Text = "Ghi Chú";
-            // 
-            // chkState
-            // 
-            // 
-            // 
-            // 
-            this.chkState.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.chkState.Location = new System.Drawing.Point(114, 201);
-            this.chkState.Name = "chkState";
-            this.chkState.Size = new System.Drawing.Size(100, 23);
-            this.chkState.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.chkState.TabIndex = 2;
-            this.chkState.Text = "Hoạt Động";
-            // 
-            // labelX4
-            // 
-            // 
-            // 
-            // 
-            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.labelX4.Location = new System.Drawing.Point(13, 201);
-            this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(75, 23);
-            this.labelX4.TabIndex = 8;
-            this.labelX4.Text = "Trạng Thái";
             // 
             // btnAdd
             // 
             this.btnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAdd.Enabled = false;
-            this.btnAdd.Location = new System.Drawing.Point(114, 290);
+            this.btnAdd.Location = new System.Drawing.Point(114, 251);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAdd.TabIndex = 9;
+            this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -181,11 +153,11 @@
             // 
             this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCancel.Location = new System.Drawing.Point(215, 290);
+            this.btnCancel.Location = new System.Drawing.Point(215, 251);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCancel.TabIndex = 9;
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Hủy";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -193,11 +165,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(385, 331);
+            this.ClientSize = new System.Drawing.Size(385, 290);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.labelX4);
-            this.Controls.Add(this.chkState);
             this.Controls.Add(this.txtNote);
             this.Controls.Add(this.labelX3);
             this.Controls.Add(this.txtWarehouseName);
@@ -222,8 +192,6 @@
         private DevComponents.DotNetBar.Controls.TextBoxX txtWarehouseName;
         private DevComponents.DotNetBar.Controls.TextBoxX txtNote;
         private DevComponents.DotNetBar.LabelX labelX3;
-        private DevComponents.DotNetBar.Controls.CheckBoxX chkState;
-        private DevComponents.DotNetBar.LabelX labelX4;
         private DevComponents.DotNetBar.ButtonX btnAdd;
         private DevComponents.DotNetBar.ButtonX btnCancel;
     }

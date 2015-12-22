@@ -28,20 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgWarehouse = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.clmWarehouseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmWarehouseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmState = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
-            this.clmDateModify = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmEdit = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.btnSearch = new DevComponents.DotNetBar.ButtonX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.btnAdd = new DevComponents.DotNetBar.ButtonX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.btnRefresh = new DevComponents.DotNetBar.ButtonX();
+            this.clmWarehouseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmWarehouseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmEdit = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgWarehouse)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,18 +52,16 @@
             this.dgWarehouse.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmWarehouseID,
             this.clmWarehouseName,
-            this.clmState,
-            this.clmDateModify,
             this.clmNote,
             this.clmEdit});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgWarehouse.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgWarehouse.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgWarehouse.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgWarehouse.Location = new System.Drawing.Point(15, 170);
             this.dgWarehouse.Name = "dgWarehouse";
@@ -73,59 +69,6 @@
             this.dgWarehouse.Size = new System.Drawing.Size(658, 293);
             this.dgWarehouse.TabIndex = 4;
             this.dgWarehouse.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgWarehouse_CellClick);
-            // 
-            // clmWarehouseID
-            // 
-            this.clmWarehouseID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.clmWarehouseID.HeaderText = "Mã Kho";
-            this.clmWarehouseID.MaxInputLength = 10;
-            this.clmWarehouseID.Name = "clmWarehouseID";
-            this.clmWarehouseID.ReadOnly = true;
-            this.clmWarehouseID.Width = 69;
-            // 
-            // clmWarehouseName
-            // 
-            this.clmWarehouseName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmWarehouseName.HeaderText = "Tên Kho";
-            this.clmWarehouseName.Name = "clmWarehouseName";
-            this.clmWarehouseName.ReadOnly = true;
-            // 
-            // clmState
-            // 
-            this.clmState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.clmState.Checked = true;
-            this.clmState.CheckState = System.Windows.Forms.CheckState.Indeterminate;
-            this.clmState.CheckValue = null;
-            this.clmState.HeaderText = "Trạng Thái";
-            this.clmState.Name = "clmState";
-            this.clmState.ReadOnly = true;
-            this.clmState.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmState.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.clmState.Width = 84;
-            // 
-            // clmDateModify
-            // 
-            this.clmDateModify.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.clmDateModify.HeaderText = "Ngày Tạo";
-            this.clmDateModify.Name = "clmDateModify";
-            this.clmDateModify.ReadOnly = true;
-            this.clmDateModify.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmDateModify.Width = 79;
-            // 
-            // clmNote
-            // 
-            this.clmNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmNote.HeaderText = "Ghi Chú";
-            this.clmNote.Name = "clmNote";
-            this.clmNote.ReadOnly = true;
-            // 
-            // clmEdit
-            // 
-            this.clmEdit.HeaderText = "";
-            this.clmEdit.Name = "clmEdit";
-            this.clmEdit.Text = "Sửa";
-            this.clmEdit.UseColumnTextForButtonValue = true;
-            this.clmEdit.Width = 50;
             // 
             // btnSearch
             // 
@@ -204,6 +147,37 @@
             this.btnRefresh.Text = "Làm tươi";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // clmWarehouseID
+            // 
+            this.clmWarehouseID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.clmWarehouseID.HeaderText = "Mã Kho";
+            this.clmWarehouseID.MaxInputLength = 10;
+            this.clmWarehouseID.Name = "clmWarehouseID";
+            this.clmWarehouseID.ReadOnly = true;
+            this.clmWarehouseID.Width = 69;
+            // 
+            // clmWarehouseName
+            // 
+            this.clmWarehouseName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmWarehouseName.HeaderText = "Tên Kho";
+            this.clmWarehouseName.Name = "clmWarehouseName";
+            this.clmWarehouseName.ReadOnly = true;
+            // 
+            // clmNote
+            // 
+            this.clmNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmNote.HeaderText = "Ghi Chú";
+            this.clmNote.Name = "clmNote";
+            this.clmNote.ReadOnly = true;
+            // 
+            // clmEdit
+            // 
+            this.clmEdit.HeaderText = "";
+            this.clmEdit.Name = "clmEdit";
+            this.clmEdit.Text = "Sửa";
+            this.clmEdit.UseColumnTextForButtonValue = true;
+            this.clmEdit.Width = 50;
+            // 
             // frmWarehouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -234,12 +208,10 @@
         private DevComponents.DotNetBar.ButtonX btnAdd;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.Controls.TextBoxX txtSearch;
+        private DevComponents.DotNetBar.ButtonX btnRefresh;
         private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn clmEdit;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmNote;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmDateModify;
-        private DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn clmState;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmWarehouseName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmWarehouseID;
-        private DevComponents.DotNetBar.ButtonX btnRefresh;
     }
 }

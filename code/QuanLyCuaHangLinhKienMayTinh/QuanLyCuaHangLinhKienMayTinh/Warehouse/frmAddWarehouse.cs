@@ -63,8 +63,7 @@ namespace QuanLyCuaHangLinhKienMayTinh.Warehouse
         {
             txtWarehouseID.Text = dt.Rows[0][0].ToString();
             txtWarehouseName.Text = dt.Rows[0][1].ToString();
-            chkState.Checked = int.Parse(dt.Rows[0][2].ToString()) == 1 ? true : false;
-            txtNote.Text = dt.Rows[0][4].ToString();
+            txtNote.Text = dt.Rows[0][3].ToString();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -72,8 +71,6 @@ namespace QuanLyCuaHangLinhKienMayTinh.Warehouse
             DtoWarehouse w = new DtoWarehouse();
             w.MaKho = txtWarehouseID.Text.ToString();
             w.TenKho = txtWarehouseName.Text.ToString();
-            w.TrangThai = chkState.Checked;
-            w.NgayTao = DateTime.Now;
             w.GhiChu = txtNote.Text.ToString();
 
             if (_isEditing)
@@ -112,7 +109,7 @@ namespace QuanLyCuaHangLinhKienMayTinh.Warehouse
         private bool isValidate()
         {
             if (txtWarehouseID.Text.IsEmpty() ||
-                txtWarehouseName.Text.IsEmpty()
+                txtWarehouseName.Text.IsEmpty() && txtWarehouseName.Text.Length >= 10
                 )
             {
                 return false;

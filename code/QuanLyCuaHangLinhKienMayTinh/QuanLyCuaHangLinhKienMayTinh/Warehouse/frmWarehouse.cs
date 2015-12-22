@@ -40,8 +40,7 @@ namespace QuanLyCuaHangLinhKienMayTinh.Warehouse
                     dataRow[0].ToString(),
                     dataRow[1].ToString(),
                     CommonFunction.IntToBool(int.Parse(dataRow[2].ToString())),
-                    dataRow[3].ToString(), 
-                    dataRow[4].ToString()
+                    dataRow[3].ToString()
                     );
                 index++;
             }
@@ -87,7 +86,7 @@ namespace QuanLyCuaHangLinhKienMayTinh.Warehouse
 
         private void dgWarehouse_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 5 )
+            if (e.ColumnIndex == 4 )
             {
                 frmAddWarehouse frm = new frmAddWarehouse(dgWarehouse.CurrentRow.Cells[0].Value.ToString());
                 frm.Closing += Frm_Closing;
