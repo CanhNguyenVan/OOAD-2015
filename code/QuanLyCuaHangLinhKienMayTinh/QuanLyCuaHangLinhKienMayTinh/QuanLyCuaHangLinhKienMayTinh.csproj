@@ -303,6 +303,10 @@
       <Project>{d08adfd6-3744-45d8-9eb6-e544d2a374ae}</Project>
       <Name>BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CommonLayer\CommonLayer.csproj">
+      <Project>{842849b1-cd5b-4224-b77d-0022c25379ec}</Project>
+      <Name>CommonLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{3b7150d3-8b40-4913-a77a-e0be6bc7fbe0}</Project>
       <Name>DTO</Name>

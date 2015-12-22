@@ -9,13 +9,17 @@ using System.Threading.Tasks;
 using DTO.Sales;
 using DTO;
 using Microsoft.ApplicationBlocks.Data;
+
 namespace DAL.Sales
 {
-    
     public class BillDAL
     {
+        public BillDAL()
+        {
+            SqlQuery.writeSQL("set dateformat dmy");
+        }
         //proList: Danh sách mã sản phẩm và số lượng tương ứng của một hóa đơn id= billId
-        public void AddBill(string billId, string date, string cusId, string staffId, int sum, Dictionary<int,int> proList)
+        public void AddBill(string billId, string date, string cusId, string staffId, int sum, List<BillProduct> proList)
         {
                 SqlParameter[] para1 =
                 {
@@ -26,8 +30,20 @@ namespace DAL.Sales
                     new SqlParameter("@ThanhTien",sum),
                     
                 };
-                SqlQuery.readProcedure("SearchProduct", para1);
- 
+                
+                string sql = "insert into HOADON VALUES ('" + billId + "','" + date + "','" + cusId + "','" + staffId + "'," + sum + ")";
+                SqlQuery.writeSQL(sql);
+                //SqlQuery.writeSQL("insert into HOADON VALUES ('@MaHD','@NgayHD','@MaKH','@MaNV',@ThanhTien)", para1);
+                for (int i = 1; i < proList.Count; i++)
+                {
+                    SqlParameter[] listpara ={
+                            new SqlParameter("@MaHD", billId),
+                            new SqlParameter("@MaSP",proList[i].proId),
+                            new SqlParameter("@SL", proList[i].num),
+
+                   };
+                    SqlQuery.writeSQL("insert into CHITIETHOADON VALUES ('@MaHD','@MaSP','@SL')",listpara);
+                }
         }
         public DataTable GetAllBill()
         {
@@ -36,28 +52,28 @@ namespace DAL.Sales
         // Lấy danh sách hóa đơn được thanh toán trong ngày
         public DataTable GetBillToday()
         {
-            string today = String.Format("{dd/MM/yyyy HH:mm:ss}",DateTime.Now.ToString());
+            string today = DateTime.Now.ToString();
             return SqlQuery.readSQL("Select* from HOADON where NgayHD=" + today);
         }
         //Lấy danh sách sản phẩm theo tên và loại
-        public DataTable GetProduct(string productName, int categoryId)
+        public DataTable GetProduct(string productName, string categoryId)
         {
-            SqlParameter[] para ={
-                                            new SqlParameter("@TenSanPham",productName),
-                                            new SqlParameter("@MaLoai",categoryId)
-                                        };
-            return SqlQuery.readProcedure("SearchProduct", para);
+            return SqlQuery.readSQL("select MaSanPham, TenSanPham, SoLuong from SANPHAM where TenSanPham like '%" + productName + "%' and LoaiSanPham=N'"+categoryId+"'");
 
         }
-        // lấy danh sách khách hàng theo tên khách hàng và loại khách hàng 
-        public DataTable GetCustomer(string cusName, int cusTypeId)
+        public DataTable GetProduct(string categoryId)
         {
-           
-                SqlParameter[] para ={
-                                            new SqlParameter("@TenKH",cusName),
-                                            new SqlParameter("@LoaiKH",cusTypeId)
-                                        };
-                return SqlQuery.readProcedure("SearchCutomer", para);
+            return SqlQuery.readSQL("select MaSanPham, TenSanPham, SoLuong from SANPHAM where LoaiSanPham=N'" + categoryId + "'");
+
+        }
+        public DataTable GetProductfromName(string productName)
+        {
+            return SqlQuery.readSQL("select MaSanPham, TenSanPham, SoLuong from SANPHAM where TenSanPham like '%"+productName+"%'");
+        }
+        // lấy danh sách khách hàng theo tên khách hàng và loại khách hàng 
+        public DataTable GetCustomer(string cusName)
+        {
+           return SqlQuery.readSQL("select MaKH, TenKH from KHACHHANG where TenKH like '%"+cusName+"%'");
         }
 
         // Lấy tất cả khách hàng
@@ -68,10 +84,33 @@ namespace DAL.Sales
         // Lấy tất cả sản phẩm
         public DataTable GetAllProduct()
         {
-            return SqlQuery.readSQL("select MaSP, TenSP from SANPHAN");
+            return SqlQuery.readSQL("select MaSanPham, TenSanPham, SoLuong from SANPHAM");
         }
-      
-  
-
+        public DataTable GetCustomerDetail(string cusId)
+        {
+            return SqlQuery.readSQL("Select CMND, DiaChi, SoDT from KHACHHANG where MaKH='"+cusId+"'");
+        }
+        public DataTable GetProductPrice(string productId)
+        {
+            return SqlQuery.readSQL("Select DonGiaBan from SANPHAM where MaSanPham='" + productId + "'");
+        }
+        public DataTable GetCategoryList()
+        {
+            return SqlQuery.readSQL("select distinct LoaiSanPham from SANPHAM");
+        }
+        // lấy quy định về thuế suất
+        public DataTable GetRule(string rule)
+        {
+            return SqlQuery.readSQL("select GiaTri from QUYDINH where TenQD= N'"+rule+"'");
+        }
+        // Lấy mã hóa đơn cuối cùng
+        public DataTable GetLastBillId()
+        {
+            return SqlQuery.readSQL("select top 1 MaHD from HOADON order by MaHD desc");
+        }
+        public DataTable GetLastCustomerId()
+        {
+            return SqlQuery.readSQL("select top 1 MaKH from KHACHHANG order by MaKH desc");
+        }
     }
 }

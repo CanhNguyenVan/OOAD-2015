@@ -24,7 +24,7 @@ namespace CommonLayer
                 throw ex;
             }
         }
-        public static DataTable readSQL(string sql, SqlParameter listPara)
+        public static DataTable readSQL(string sql, SqlParameter[] listPara)
         {
             try
             {
@@ -38,26 +38,36 @@ namespace CommonLayer
         }
         public static void writeSQL(string sql)
         {
+           
             try
             {
-                SqlHelper.ExecuteDataset(Constants.ConnectionString, CommandType.Text, sql);
-
+                SqlConnection con = new SqlConnection(Constants.ConnectionString);
+                con.Open();
+                SqlTransaction tran = con.BeginTransaction();
+                SqlHelper.ExecuteDataset(tran, CommandType.Text, sql);
+                tran.Commit();
+                con.Close();
             }
-            catch (SqlException ex)
+            catch (Exception e)
             {
-                throw ex;
+                throw e;
             }
+            
         }
-        public static void writeSQL(string sql, SqlParameter listPara)
+        public static void writeSQL(string sql, SqlParameter[] listPara)
         {
             try
             {
-                SqlHelper.ExecuteDataset(Constants.ConnectionString, CommandType.Text, sql, listPara);
-
+                SqlConnection con = new SqlConnection(Constants.ConnectionString);
+                con.Open();
+                SqlTransaction tran = con.BeginTransaction();
+                SqlHelper.ExecuteDataset(tran, CommandType.Text, sql, listPara);
+                tran.Commit();
+                con.Close();
             }
-            catch (SqlException ex)
+            catch (Exception e)
             {
-                throw ex;
+                throw e;
             }
         }
         public static DataTable readProcedure(string procedureName)

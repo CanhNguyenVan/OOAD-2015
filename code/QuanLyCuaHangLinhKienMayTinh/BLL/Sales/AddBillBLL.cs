@@ -7,47 +7,87 @@ using DTO.Warehouse;
 using DTO.Sales;
 using DAL.Sales;
 using System.Data;
+using CommonLayer;
 //chức năng add bill làm từ chủ nhật ngày 14/12
 namespace BLL.Sales
 {
+
     public class AddBillBLL
     {
         
         BillDAL dal= new BillDAL();
+        DataTable customerList;
+        public AddBillBLL()
+        {
+            customerList = dal.GetAllCustomer();
+        }
         public DataTable GetAllCustomer()
         {
             return dal.GetAllCustomer();
         }
         public DataTable GetAllProduct()
         {
-            return dal.GetAllCustomer();
+            return dal.GetAllProduct();
         }
-        public DataTable SearchProduct(string productName, int typeId)
+        public DataTable SearchProduct (string productName, string category)
         {
-            return dal.GetProduct(productName, typeId);
+            return dal.GetProduct (productName,category);
         }
-        public DataTable SearchCustomer(string customerName, int typeId)
+        public DataTable SearchCustomer(string customerName)
         {
-            return dal.GetCustomer(customerName, typeId);
+            return dal.GetCustomer(customerName);
 
         }
-        public void SaveBill(string billId, string date, string cusId, string staffId, int sum, Dictionary<int,int> proList)
+        public void SaveBill(string cusId, string staffId, int sum, List<BillProduct>proList)
         {
-            dal.AddBill(this.NextId(billId), date, cusId, staffId, sum, proList);
+           string now= DateTime.Now.ToString("MM-dd-yyyy");
+            string lastBillId = dal.GetLastBillId().Rows.Count==0?"":dal.GetLastBillId().Rows[0][0].ToString();
+            dal.AddBill(this.NextId("HD",lastBillId),now, cusId, staffId, sum, proList);
         }
-        public string NextId(string id)
+        public DataTable GetCustomerDetail(string cusId)
         {
-            if(id==""){
-                return "KH000001";
-            }
-            int nextNum=int.Parse(id.Substring(1))+1;
-            string num=nextNum.ToString();
-            while(num.Length<6){
-                num="0"+num;
-            }
-            return "KH"+num;
+            return dal.GetCustomerDetail(cusId);
         }
-
-       
+        public String GetProductPrice(string productId)
+        {
+            return dal.GetProductPrice(productId).Rows[0][0].ToString();
+        }
+        public string NextId(string reStr, string id)
+        {
+            if (id == "")
+            {
+                return reStr+"1";
+            }
+            int len = id.Length;
+            string str = id.Substring(2, len - 2);
+            int nextNum = int.Parse(str) + 1;
+            string num = nextNum.ToString();
+            return reStr + num;
+        }
+        public DataTable GetCategoryList()
+        {
+            return dal.GetCategoryList();
+        }
+        public DataTable GetProduct(string category)
+        {
+            return dal.GetProduct(category);
+        }
+        public DataTable GetProduct(string category, string productName)
+        {
+            return dal.GetProduct(productName, category);
+        }
+        public DataTable GetProductfromName(string productName)
+        {
+            return dal.GetProductfromName(productName);
+        }
+        // Lấy thuế suất
+        public int GetTax()
+        {
+            return int.Parse(dal.GetRule("Thuế suất").Rows[0][0].ToString());
+        }
+        public string GetLastCustomer()
+        {
+            return dal.GetLastCustomerId().Rows.Count==0?"":dal.GetLastCustomerId().Rows[0][0].ToString();
+        }
     }
 }
