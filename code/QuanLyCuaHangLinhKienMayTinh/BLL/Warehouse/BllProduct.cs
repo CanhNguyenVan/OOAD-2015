@@ -44,6 +44,11 @@ namespace BLL.Warehouse
             //return products;
         }
 
+        public DtoProduct GetProductByID(string id)
+        {
+            return _dalProduct.GetProductByID(id);
+        }
+
         public bool AddProduct(DtoProduct data)
         {
             try

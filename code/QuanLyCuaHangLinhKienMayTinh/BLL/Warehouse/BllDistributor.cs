@@ -10,15 +10,6 @@ namespace BLL.Warehouse
 {
     public class BllDistributor
     {
-        private DalDistributor _dalDistributor;
-
-        public BllDistributor()
-        {
-            _dalDistributor = new DalDistributor();
-        }
-        public DataTable GetDistributorList()
-        {
-            return _dalDistributor.GetDistributorList();
-        }
+        
     }
 }

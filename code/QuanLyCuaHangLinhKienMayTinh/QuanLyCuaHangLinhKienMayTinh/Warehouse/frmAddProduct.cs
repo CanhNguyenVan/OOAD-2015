@@ -37,15 +37,12 @@ namespace QuanLyCuaHangLinhKienMayTinh.Warehouse
             InitializeComponent();
 
             _bllProduct = new BllProduct();
-            _bllDistributor = new BllDistributor();
-            _bllWarehouse = new BllWarehouse();
             Load += FrmAddProduct_Load;
         }
 
         private void FrmAddProduct_Load(object sender, EventArgs e)
         {
-            distributorComboBox.DataSource = _bllDistributor.GetDistributorList();
-            warehouseComboBox.DataSource = _bllWarehouse.GetListWarehouses();
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

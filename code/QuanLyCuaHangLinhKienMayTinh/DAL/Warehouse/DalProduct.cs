@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommonLayer;
+using DTO.Annotations;
 using DTO.Warehouse;
 using Microsoft.ApplicationBlocks.Data;
 
@@ -18,6 +19,24 @@ namespace DAL.Warehouse
             return SqlHelper.ExecuteDataset(Constants.ConnectionString,
                 CommandType.StoredProcedure,
                 "GetListProducts").Tables[0];
+        }
+
+        public DtoProduct GetProductByID(string id)
+        {
+            DataTable dt =  SqlHelper.ExecuteDataset(Constants.ConnectionString, CommandType.Text,
+                "select * from SANPHAM where MaSanPham = @MaSanPham", new SqlParameter("@MaSanPham", id)).Tables[0];
+            DtoProduct dto = new DtoProduct(
+                dt.Rows[0].ItemArray[0].ToString(),
+                dt.Rows[0].ItemArray[1].ToString(),
+                dt.Rows[0].ItemArray[2].ToString(),
+                int.Parse(dt.Rows[0].ItemArray[3].ToString()),
+                double.Parse(dt.Rows[0].ItemArray[4].ToString()),
+                double.Parse(dt.Rows[0].ItemArray[5].ToString()),
+                int.Parse(dt.Rows[0].ItemArray[6].ToString()),
+                dt.Rows[0].ItemArray[7].ToString(),
+                dt.Rows[0].ItemArray[8].ToString()
+                );
+            return dto;
         }
 
         public int AddProduct(DtoProduct data)

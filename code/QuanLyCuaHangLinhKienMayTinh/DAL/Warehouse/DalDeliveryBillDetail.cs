@@ -9,22 +9,22 @@ using CommonLayer;
 using DTO.Warehouse;
 using Microsoft.ApplicationBlocks.Data;
 
-namespace DAL.Warehouse
+namespace DAL.Delivery
 {
-    public class DalWarehouseBillDetail
+    public class DalDeliveryBillDetail
     {
-        public DataTable GetWarehouseBillDetailList()
+        public DataTable GetDeliveryBillDetailList()
         {
             return SqlHelper.ExecuteDataset(Constants.ConnectionString, CommandType.StoredProcedure,
-                "GetWarehouseBillDetailList").Tables[0];
+                "GetDeliveryBillDetailList").Tables[0];
         }
 
-        public int AddWarehouseBillDetail(DtoWarehouseBillDetail data)
+        public int AddDeliveryBillDetail(DtoDeliveryBillDetail data)
         {
             SqlParameter[] para =
             {
-                new SqlParameter("@MaChiTietPhieuNhapKho", data.MaChiTietPhieuNhapKho),
-                new SqlParameter("@MaPhieuNhapKho", data.MaPhieuNhapKho),
+                new SqlParameter("@MaChiTietPhieuXuatKho", data.MaChiTietPhieuXuatKho),
+                new SqlParameter("@MaPhieuXuatKho", data.MaPhieuXuatKho),
                 new SqlParameter("@MaSanPham", data.MaSanPham),
                 new SqlParameter("@SoLuong", data.SoLuong),
                 new SqlParameter("@GhiChu", data.GhiChu),
@@ -33,7 +33,7 @@ namespace DAL.Warehouse
             try
             {
                 return SqlHelper.ExecuteNonQuery(Constants.ConnectionString, CommandType.StoredProcedure,
-                    "AddWarehouseBillDetail",
+                    "AddDeliveryBillDetail",
                     para);
             }
             catch (SqlException)
@@ -46,12 +46,11 @@ namespace DAL.Warehouse
             }
         }
 
-        public DataTable GetWarehouseBillDetailWithWarehouseBillID(string id)
+        public DataTable GetDeliveryBillDetailWithDeliveryBillID(string id)
         {
             return SqlHelper.ExecuteDataset(Constants.ConnectionString, CommandType.StoredProcedure,
-                "GetWarehouseBillDetailListWithMaPhieuNhapKho",
-                new SqlParameter("@MaPhieuNhapKho", id)).Tables[0];
+                "GetDeliveryBillDetailListWithMaPhieuXuatKho",
+                new SqlParameter("@MaPhieuXuatKho", id)).Tables[0];
         }
-
     }
 }

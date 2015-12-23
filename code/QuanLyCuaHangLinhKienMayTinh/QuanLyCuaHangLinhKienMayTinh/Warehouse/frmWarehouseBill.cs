@@ -51,14 +51,33 @@ namespace QuanLyCuaHangLinhKienMayTinh.Warehouse
 
         private void dgvWarehouseBill_SelectionChanged(object sender, EventArgs e)
         {
-            string id = dgvWarehouseBill.CurrentRow.Cells[0].Value.ToString();
-            dgvDetailWarehouseBill.DataSource = _bllWarehouseBillDetail.GetWarehouseBillDetailWithWarehouseBillID(id);
-            txtTotal.Text = _bllWarehouseBillDetail.SumTotal(id).ToString();
+            try
+            {
+                string id = dgvWarehouseBill.CurrentRow.Cells[0].Value.ToString();
+                dgvDetailWarehouseBill.DataSource = _bllWarehouseBillDetail.GetWarehouseBillDetailWithWarehouseBillID(id);
+                txtTotal.Text = _bllWarehouseBillDetail.SumTotal(id).ToString();
+            }
+            catch (Exception ex)
+            {
+                
+            }
         }
 
-        private void panel6_Paint(object sender, PaintEventArgs e)
+        private void btnThem_Click(object sender, EventArgs e)
         {
+            frmAddWarehouseBill frm = new frmAddWarehouseBill();
+            frm.Closed += Frm_Closed;
+            frm.ShowDialog();
+        }
 
+        private void Frm_Closed(object sender, EventArgs e)
+        {
+            btnLamTuoi.PerformClick();
+        }
+
+        private void btnLamTuoi_Click(object sender, EventArgs e)
+        {
+            LoadDgvWarehouseBillList();
         }
     }
 }
