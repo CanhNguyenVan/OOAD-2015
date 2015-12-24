@@ -311,7 +311,22 @@ INSERT INTO KHACHHANG VALUES('KH015',N'Nguyễn Du','258932344',N'100 Xa Lộ H�
 --Data for QUYDINH table
 
 insert into THAMSO values('0', N'Thuế suất', 10);
-set dateformat dmy; insert into HOADON values('HD2', '21/02/2000','KH001', 'NV1', 2000000)
-
-insert into HOADON VALUES ('HD1','22/12/2015','KH008','NV1',60000)
-insert into CHITIETHOADON VALUES ('HD1','SP10',1)
+set dateformat dmy;
+INSERT [dbo].[CHITIETHOADON] ([MaHD], [MaSanPham], [SoLuong]) VALUES (N'HD1', N'SP10', 1)
+INSERT [dbo].[CHITIETHOADON] ([MaHD], [MaSanPham], [SoLuong]) VALUES (N'HD1', N'SP4', 4)
+INSERT [dbo].[CHITIETHOADON] ([MaHD], [MaSanPham], [SoLuong]) VALUES (N'HD1', N'SP5', 3)
+INSERT [dbo].[CHITIETHOADON] ([MaHD], [MaSanPham], [SoLuong]) VALUES (N'HD2', N'SP10', 1)
+INSERT [dbo].[CHITIETHOADON] ([MaHD], [MaSanPham], [SoLuong]) VALUES (N'HD2', N'SP3', 1)
+INSERT [dbo].[CHITIETHOADON] ([MaHD], [MaSanPham], [SoLuong]) VALUES (N'HD3', N'SP10', 3)
+INSERT [dbo].[CHITIETHOADON] ([MaHD], [MaSanPham], [SoLuong]) VALUES (N'HD3', N'SP11', 2)
+INSERT [dbo].[CHITIETHOADON] ([MaHD], [MaSanPham], [SoLuong]) VALUES (N'HD4', N'SP3', 1)
+INSERT [dbo].[CHITIETHOADON] ([MaHD], [MaSanPham], [SoLuong]) VALUES (N'HD4', N'SP6', 2)
+INSERT [dbo].[CHITIETHOADON] ([MaHD], [MaSanPham], [SoLuong]) VALUES (N'HD5', N'SP10', 7)
+INSERT [dbo].[CHITIETHOADON] ([MaHD], [MaSanPham], [SoLuong]) VALUES (N'HD6', N'SP11', 3)
+INSERT [dbo].[CHITIETHOADON] ([MaHD], [MaSanPham], [SoLuong]) VALUES (N'HD6', N'SP5', 8)
+INSERT [dbo].[HOADON] ([MaHD], [NgayHD], [MaKH], [MaNV], [ThanhTien]) VALUES (N'HD1', CAST(N'2015-12-22 00:00:00' AS SmallDateTime), N'KH005', N'NV1', 19560000.0000)
+INSERT [dbo].[HOADON] ([MaHD], [NgayHD], [MaKH], [MaNV], [ThanhTien]) VALUES (N'HD2', CAST(N'2015-12-24 00:00:00' AS SmallDateTime), N'KH003', N'NV1', 18150000.0000)
+INSERT [dbo].[HOADON] ([MaHD], [NgayHD], [MaKH], [MaNV], [ThanhTien]) VALUES (N'HD3', CAST(N'2015-12-24 00:00:00' AS SmallDateTime), N'KH002', N'NV1', 105350000.0000)
+INSERT [dbo].[HOADON] ([MaHD], [NgayHD], [MaKH], [MaNV], [ThanhTien]) VALUES (N'HD4', CAST(N'2015-12-24 00:00:00' AS SmallDateTime), N'KH003', N'NV1', 108500000.0000)
+INSERT [dbo].[HOADON] ([MaHD], [NgayHD], [MaKH], [MaNV], [ThanhTien]) VALUES (N'HD5', CAST(N'2015-12-24 00:00:00' AS SmallDateTime), N'KH013', N'NV1', 234500000.0000)
+INSERT [dbo].[HOADON] ([MaHD], [NgayHD], [MaKH], [MaNV], [ThanhTien]) VALUES (N'HD6', CAST(N'2015-12-24 00:00:00' AS SmallDateTime), N'KH014', N'NV1', 288300000.0000)
