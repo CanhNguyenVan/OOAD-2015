@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using DTO.Annotations;
+
 
 namespace DTO.Warehouse
 {
@@ -164,7 +164,7 @@ namespace DTO.Warehouse
 
         public override string ToString()
         {
-            return $"ThoiGianBaoHanh: {ThoiGianBaoHanh}, SoLuong: {SoLuong}, LoaiSanPham: {LoaiSanPham}, GhiChu: {GhiChu}, DonViTinh: {DonViTinh}, DonGiaBan: {DonGiaBan}, DonGiaNhap: {DonGiaNhap}, TenSanPham: {TenSanPham}, MaSanPham: {MaSanPham}";
+            return "ThoiGianBaoHanh: {ThoiGianBaoHanh}, SoLuong: {SoLuong}, LoaiSanPham: {LoaiSanPham}, GhiChu: {GhiChu}, DonViTinh: {DonViTinh}, DonGiaBan: {DonGiaBan}, DonGiaNhap: {DonGiaNhap}, TenSanPham: {TenSanPham}, MaSanPham: {MaSanPham}";
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿Use master
+﻿	Use master
 Go
 --Drop Database QLBH_CuaHangBanMayTinhVaLinhKien
 Go
@@ -277,8 +277,8 @@ CREATE TABLE CHITIETPHIEUXUATLINHKIENBAOHANH
 )
 CREATE TABLE THAMSO
 (
-	MaQD int not null primary key,
-	TenQD nvarchar(100) not null,
+	MaTS int not null primary key identity(0,1),
+	TenTS nvarchar(100) not null,
 	GiaTri int not null,
 )
 insert into SANPHAM values('SP1', 'USB Tosiba',N'Phụ kiện', 60, 100000, 150000, 20, N'cái', 'Hàng Trung Quốc');
@@ -330,3 +330,6 @@ INSERT [dbo].[HOADON] ([MaHD], [NgayHD], [MaKH], [MaNV], [ThanhTien]) VALUES (N'
 INSERT [dbo].[HOADON] ([MaHD], [NgayHD], [MaKH], [MaNV], [ThanhTien]) VALUES (N'HD4', CAST(N'2015-12-24 00:00:00' AS SmallDateTime), N'KH003', N'NV1', 108500000.0000)
 INSERT [dbo].[HOADON] ([MaHD], [NgayHD], [MaKH], [MaNV], [ThanhTien]) VALUES (N'HD5', CAST(N'2015-12-24 00:00:00' AS SmallDateTime), N'KH013', N'NV1', 234500000.0000)
 INSERT [dbo].[HOADON] ([MaHD], [NgayHD], [MaKH], [MaNV], [ThanhTien]) VALUES (N'HD6', CAST(N'2015-12-24 00:00:00' AS SmallDateTime), N'KH014', N'NV1', 288300000.0000)
+
+INSERT into THAMSO(TenTS, GiaTri) values(N'Thuế suất', 10)
+select MaSanPham, count(*) from HOADONTRA where MaHD='HD2' group by MaSanPham

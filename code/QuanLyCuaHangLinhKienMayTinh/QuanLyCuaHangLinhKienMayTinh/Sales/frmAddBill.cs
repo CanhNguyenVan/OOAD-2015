@@ -27,18 +27,23 @@ namespace QuanLyCuaHangLinhKienMayTinh.Sales
         {
             dgvCustomer.DataSource = bll.GetAllCustomer();
             dgvProduct.DataSource = bll.GetAllProduct();
+            // load nhom san pham
+            LoadProductCategory();
+            // load thue suat
+            txtTaxPercent.Text = bll.GetTax().ToString()+"%";
+            lbStatus.Text = "";
+
+        }
+        public void LoadProductCategory()
+        {
             cbProductType.Items.Add("Tất cả");
-            DataTable dt = bll.GetCategoryList();
+            DataTable dt = bll.GetProductCategory();
             int count = dt.Rows.Count;
             for (int i = 0; i < count; i++)
             {
                 cbProductType.Items.Add(dt.Rows[i][0]);
             }
             cbProductType.SelectedIndex = 0;
-            // load thue suat
-            txtTaxPercent.Text = bll.GetTax().ToString()+"%";
-
-
         }
 
         private void txtSearchCustomerName_TextChanged(object sender, EventArgs e)
@@ -76,7 +81,7 @@ namespace QuanLyCuaHangLinhKienMayTinh.Sales
             
            
         }
-        // Nhấn nút ghi
+        // Nhấn nút Ghi
         private void btnGhi_Click(object sender, EventArgs e)
         {
             if (productId == "")
@@ -89,9 +94,17 @@ namespace QuanLyCuaHangLinhKienMayTinh.Sales
                 MessageBox.Show("Bạn phải nhập số lượng");
                 return;
             }
+            foreach (DataGridViewRow r in dgvProductAdded.Rows)
+            {
+                if (r.Cells[0].Value.ToString() == productId)
+                {
+                    r.Cells[2].Value = int.Parse(r.Cells[2].Value.ToString()) + nUdAmount.Value;
+                    return;
+                }
+            }
             int productPrice = int.Parse(txtPrice.Text);
             string[] row = new string[] { productId, productName, nUdAmount.Value.ToString(), productPrice.ToString(), (productPrice * nUdAmount.Value).ToString() };
-            dgvProductList.Rows.Add(row);
+            dgvProductAdded.Rows.Add(row);
             sumMoney += productPrice * (int)nUdAmount.Value;
             txtTaxMoney.Text = (sumMoney * 0.1).ToString();
             txtSumMoney.Text = sumMoney.ToString();
@@ -101,7 +114,7 @@ namespace QuanLyCuaHangLinhKienMayTinh.Sales
         {
             /**/
         }
-
+        // sự kiện chọn xong combobox 
         private void cbProductType_SelectedValueChanged(object sender, EventArgs e)
         {
             //MessageBox.Show("commit now!");
@@ -145,10 +158,10 @@ namespace QuanLyCuaHangLinhKienMayTinh.Sales
         private void btnSave_Click(object sender, EventArgs e)
         {
             if(txtCustomerId.Text==""){
-                txtCustomerId.Text=bll.NextId("KH",bll.GetLastCustomer());
+                txtCustomerId.Text=AddBillBLL.NextId("KH",bll.GetLastCustomer(),2);
             }
             List<BillProduct> proList = new List<BillProduct>();
-            foreach(DataGridViewRow row in dgvProductList.Rows)
+            foreach(DataGridViewRow row in dgvProductAdded.Rows)
             {
                 BillProduct bp= new BillProduct();
                 bp.proId= row.Cells[0].Value.ToString();
@@ -157,7 +170,29 @@ namespace QuanLyCuaHangLinhKienMayTinh.Sales
             }
             //chú ý !!!!!!!!!!!!!!!!! chổ này chưa lấy được mã nhân viên
             bll.SaveBill(txtCustomerId.Text, "NV1", int.Parse(txtSumMoney.Text), proList);
-            MessageBox.Show("Thành Công");
+
+            txtCustomerName.Text = "";
+            txtCustomerId.Text = "";
+            txtPhoneNumber.Text = "";
+            txtAddress.Text = "";
+            txtIdCardNumber.Text = "";
+            txtPrice.Text = "";
+            dgvProductAdded.Rows.Clear();
+            lbStatus.Text = "Lưu thành công";
+            lbStatus.ForeColor = Color.Green;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            txtCustomerName.Text = "";
+            txtCustomerId.Text = "";
+            txtPhoneNumber.Text = "";
+            txtAddress.Text = "";
+            txtIdCardNumber.Text = ""; 
+            txtPrice.Text = "";
+            dgvProductAdded.Rows.Clear();
+            
+
         }
 
 

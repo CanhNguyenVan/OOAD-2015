@@ -11,7 +11,6 @@ using CommonLayer;
 //chức năng add bill làm từ chủ nhật ngày 14/12
 namespace BLL.Sales
 {
-
     public class AddBillBLL
     {
         
@@ -40,9 +39,9 @@ namespace BLL.Sales
         }
         public void SaveBill(string cusId, string staffId, int sum, List<BillProduct>proList)
         {
-           string now= DateTime.Now.ToString("MM-dd-yyyy");
+           string now= DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             string lastBillId = dal.GetLastBillId().Rows.Count==0?"":dal.GetLastBillId().Rows[0][0].ToString();
-            dal.AddBill(this.NextId("HD",lastBillId),now, cusId, staffId, sum, proList);
+            dal.AddBill(AddBillBLL.NextId("HD",lastBillId, 2),now, cusId, staffId, sum, proList);
         }
         public DataTable GetCustomerDetail(string cusId)
         {
@@ -52,19 +51,19 @@ namespace BLL.Sales
         {
             return dal.GetProductPrice(productId).Rows[0][0].ToString();
         }
-        public string NextId(string reStr, string id)
+        public static string NextId(string reStr, string id, int subLen)
         {
             if (id == "")
             {
                 return reStr+"1";
             }
             int len = id.Length;
-            string str = id.Substring(2, len - 2);
+            string str = id.Substring(subLen, len - subLen);//cần sửa
             int nextNum = int.Parse(str) + 1;
             string num = nextNum.ToString();
             return reStr + num;
         }
-        public DataTable GetCategoryList()
+        public DataTable GetProductCategory()
         {
             return dal.GetCategoryList();
         }

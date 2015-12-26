@@ -16,7 +16,7 @@ namespace DAL.Sales
     {
         public BillDAL()
         {
-            SqlQuery.writeSQL("set dateformat dmy");
+           
         }
         //proList: Danh sách mã sản phẩm và số lượng tương ứng của một hóa đơn id= billId
         public void AddBill(string billId, string date, string cusId, string staffId, int sum, List<BillProduct> proList)
@@ -28,21 +28,22 @@ namespace DAL.Sales
                     new SqlParameter("@MaKH",cusId),
                     new SqlParameter("@MaNV",staffId),
                     new SqlParameter("@ThanhTien",sum),
-                    
+                   
                 };
-                
-                string sql = "insert into HOADON VALUES ('" + billId + "','" + date + "','" + cusId + "','" + staffId + "'," + sum + ")";
-                SqlQuery.writeSQL(sql);
-                //SqlQuery.writeSQL("insert into HOADON VALUES ('@MaHD','@NgayHD','@MaKH','@MaNV',@ThanhTien)", para1);
-                for (int i = 1; i < proList.Count; i++)
+               // string sql = " set dateformat dmy; insert into HOADON VALUES ('" + billId + "','" + date + "','" + cusId + "','" + staffId + "'," + sum + ")";
+               // SqlQuery.writeSQL(sql);
+               SqlQuery.writeSQL("insert into HOADON VALUES (@MaHD, @NgayHD, @MaKH, @MaNV, @ThanhTien)", para1);
+                for (int i = 0; i < proList.Count; i++)
                 {
-                    SqlParameter[] listpara ={
+                    SqlParameter[] listpara ={ 
                             new SqlParameter("@MaHD", billId),
                             new SqlParameter("@MaSP",proList[i].proId),
                             new SqlParameter("@SL", proList[i].num),
 
                    };
-                    SqlQuery.writeSQL("insert into CHITIETHOADON VALUES ('@MaHD','@MaSP','@SL')",listpara);
+                    //string aaa = "insert into CHITIETHOADON VALUES ('"+billId+"','"+proList[i].proId+"'," + proList[i].num + ")";
+                    //SqlQuery.writeSQL(aaa);
+                    SqlQuery.writeSQL("insert into CHITIETHOADON VALUES (@MaHD,@MaSP,@SL)", listpara);
                 }
         }
         public DataTable GetAllBill()
@@ -61,9 +62,9 @@ namespace DAL.Sales
             return SqlQuery.readSQL("select MaSanPham, TenSanPham, SoLuong from SANPHAM where TenSanPham like '%" + productName + "%' and LoaiSanPham=N'"+categoryId+"'");
 
         }
-        public DataTable GetProduct(string categoryId)
+        public DataTable GetProduct(string categoryName)
         {
-            return SqlQuery.readSQL("select MaSanPham, TenSanPham, SoLuong from SANPHAM where LoaiSanPham=N'" + categoryId + "'");
+            return SqlQuery.readSQL("select MaSanPham, TenSanPham, SoLuong from SANPHAM where LoaiSanPham=N'" + categoryName + "'");
 
         }
         public DataTable GetProductfromName(string productName)
@@ -101,7 +102,7 @@ namespace DAL.Sales
         // lấy quy định về thuế suất
         public DataTable GetRule(string rule)
         {
-            return SqlQuery.readSQL("select GiaTri from QUYDINH where TenQD= N'"+rule+"'");
+            return SqlQuery.readSQL("select GiaTri from THAMSO where TenTS= N'"+rule+"'");
         }
         // Lấy mã hóa đơn cuối cùng
         public DataTable GetLastBillId()
